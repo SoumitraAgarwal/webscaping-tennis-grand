@@ -4,8 +4,8 @@ import os
 import requests
 import shutil
 
-if("Pictures" not in os.listdir(".")):
-	os.mkdir("Pictures")
+if("Pictures1" not in os.listdir(".")):
+	os.mkdir("Pictures1")
 
 proxies = {
   'http': 'http://172.16.114.19:3128',
