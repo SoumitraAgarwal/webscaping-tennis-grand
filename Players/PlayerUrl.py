@@ -18,20 +18,20 @@ right_table = soup.find('table', class_='tennis-table')
 
 URL = []
 Player = []
-iterator = 0
 
 for row in right_table.findAll("tr", class_ = 'player-row'):
     cells = row.find("td", class_ = 'player-name')
     if(cells!=None):
-    	a = cells.find("a")
-    	if(a!=None):
-	    	URL.append(a["href"])
-	        Player.append(a.find(text = True))
-	        iterator += 1
+        a = cells.find("a")
+        if(a!=None):
+            url = a["href"]
+            player = a.find(text=True)
+            
+            URL.append(url)
+            Player.append(player)
+        
+            print("Done for " + player)
 
-    if(iterator > 0):
-		print("Done for " + Player[iterator - 1])
-		df=pd.DataFrame({'Name':Player, 'url' : URL})
-		print(df)
-		df.to_csv('Names.csv', index = False, encoding = 'utf-8')
-
+df=pd.DataFrame({'Name':Player, 'url' : URL})
+print(df)
+df.to_csv('Names.csv', index = False, encoding = 'utf-8')
