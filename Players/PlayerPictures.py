@@ -21,16 +21,15 @@ names	= soup.findAll('td', class_="player-cell")
 
 iterat  = 0
 
-for avatar in avatars:
-	Nat 	= avatar.find('img')
-	name 	= names[iterat].find(text = True)
-	iterat += 1
+for i, (avatar_cell, name_cell) in enumerate(zip(avatars, names)):
+	avatar 	= avatar_cell.find('img')
+	name 	= name_cell.find(text = True)
 
-	print("Working for " + name + " " + str(iterat))
+	print("Working for " + name + " " + str(i))
 	
 	while(True):
 		try:
-			response = requests.get(url+Nat['src'], stream=True,proxies=proxies)
+			response = requests.get(url+avatar['src'], stream=True,proxies=proxies)
 		except requests.exceptions.RequestException as e:  # This is the correct syntax
 			print(e)
 			continue
