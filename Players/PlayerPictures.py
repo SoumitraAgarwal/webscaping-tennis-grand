@@ -19,8 +19,6 @@ soup 	= BeautifulSoup(page.read(), "lxml")
 avatars = soup.findAll('td', class_="player-avatar-cell")
 names	= soup.findAll('td', class_="player-cell")
 
-iterat  = 0
-
 for i, (avatar_cell, name_cell) in enumerate(zip(avatars, names)):
 	avatar 	= avatar_cell.find('img')
 	name 	= name_cell.find(text = True)
